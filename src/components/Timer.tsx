@@ -3,15 +3,12 @@
 import useTimer from "@/hooks/useTimer";
 import React, { useState } from "react";
 
-type Props = {};
-
-function Timer({}: Props) {
+function Timer({}) {
   const [timerInput, setTimerInput] = useState<number>();
   const {
     isRunning,
     start,
     pause,
-    resume,
     reset,
     // timer,
     seconds,

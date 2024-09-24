@@ -4,7 +4,7 @@ const configuration = {
   iceServers: [{ urls: "stun:stun.l.google.com:19302" }],
 };
 
-export const useWebRTC = (onDataReceived: (data: any) => void) => {
+export const useWebRTC = (onDataReceived: (data: unknown) => void) => {
   const peerConnection = useRef<RTCPeerConnection | null>(null);
   const dataChannel = useRef<RTCDataChannel | null>(null);
 
@@ -42,7 +42,7 @@ export const useWebRTC = (onDataReceived: (data: any) => void) => {
     };
   }, [onDataReceived]);
 
-  const sendData = (data: any) => {
+  const sendData = (data: unknown) => {
     if (dataChannel.current?.readyState === "open") {
       dataChannel.current.send(JSON.stringify(data));
     }

@@ -2,9 +2,7 @@
 
 import React, { useRef, useState } from "react";
 
-type Props = {};
-
-export default function Stopwatch({}: Props) {
+export default function Stopwatch() {
   const [now, setNow] = useState<number>(0);
   const [startTime, setStartTime] = useState<number>(0);
 

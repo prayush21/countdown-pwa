@@ -3,7 +3,7 @@
 import webpush from "web-push";
 
 webpush.setVapidDetails(
-  "mailto:example@yourdomain.org",
+  "<mailto:prayushdave@gmailcom.com>",
   process.env.NEXT_PUBLIC_VAPID_PUBLIC_KEY!,
   process.env.VAPID_PRIVATE_KEY!
 );
@@ -31,7 +31,13 @@ export async function sendNotification(message: string) {
 
   try {
     await webpush.sendNotification(
-      subscription,
+      {
+        ...subscription,
+        keys: {
+          p256dh: "your_static_p256dh_key",
+          auth: "your_static_auth_key",
+        },
+      },
       JSON.stringify({
         title: "Test Notification",
         body: message,

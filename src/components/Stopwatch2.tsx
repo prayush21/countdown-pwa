@@ -2,9 +2,7 @@
 
 import useStopwatch from "@/hooks/useStopwatch";
 
-type Props = {};
-
-export default function Stopwatch2({}: Props) {
+export default function Stopwatch2() {
   const { minutes, seconds, milliseconds, start, stop, pause, isRunning } =
     useStopwatch();
 

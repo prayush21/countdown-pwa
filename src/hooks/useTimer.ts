@@ -20,7 +20,7 @@ function useTimer(initialValue = 20, onTimeUp: () => void) {
     console.log("now - end", endTime, now, initialValue);
     clearInterval(intervalRef.current);
     intervalRef.current = setInterval(() => {
-      setNow((prevNow) => {
+      setNow(() => {
         const currentNow = Date.now(); // Get the latest current time
         const timeLeft = endTime - currentNow;
         // console.log("endTime,now, timeLeft", endTime, currentNow, timeLeft);

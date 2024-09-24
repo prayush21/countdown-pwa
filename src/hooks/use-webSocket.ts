@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
-export const useWebSocket = (onMessage) => {
-  const [ws, setWs] = useState(null);
+export const useWebSocket = (onMessage: (message: string) => void) => {
+  const [ws, setWs] = useState<WebSocket | null>(null);
 
   useEffect(() => {
     const socket = new WebSocket("ws://localhost:3000/api/ws");
@@ -21,7 +21,7 @@ export const useWebSocket = (onMessage) => {
     };
   }, [onMessage]);
 
-  const sendMessage = (data) => {
+  const sendMessage = (data: string) => {
     if (ws && ws.readyState === WebSocket.OPEN) {
       ws.send(JSON.stringify(data));
     }

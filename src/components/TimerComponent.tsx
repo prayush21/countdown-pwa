@@ -4,8 +4,7 @@ import useTimer from "@/hooks/use-timer";
 import React from "react";
 
 const TimerComponent: React.FC = () => {
-  const { displayTimeLeft, timeLeft, isRunning, start, pause, reset } =
-    useTimer(); // Pass initial time in seconds
+  const { displayTimeLeft, isRunning, start, pause, reset } = useTimer(); // Pass initial time in seconds
   console.log("dis", displayTimeLeft);
 
   const minutes = Math.floor(displayTimeLeft / 60);

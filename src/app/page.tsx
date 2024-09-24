@@ -4,6 +4,10 @@ import { useState, useEffect } from "react";
 import { subscribeUser, unsubscribeUser, sendNotification } from "./actions";
 import Countdown from "@/components/Countdown";
 
+interface WindowWithMSStream extends Window {
+  MSStream?: unknown;
+}
+
 function urlBase64ToUint8Array(base64String: string) {
   const padding = "=".repeat((4 - (base64String.length % 4)) % 4);
   const base64 = (base64String + padding)
@@ -38,7 +42,8 @@ function PushNotificationManager() {
       scope: "/",
       updateViaCache: "none",
     });
-    const sub = await registration.pushManager.getSubscription();
+    const sub: PushSubscription | null =
+      await registration.pushManager.getSubscription();
     setSubscription(sub);
   }
 
@@ -46,6 +51,7 @@ function PushNotificationManager() {
     const registration = await navigator.serviceWorker.ready;
     const sub = await registration.pushManager.subscribe({
       userVisibleOnly: true,
+
       applicationServerKey: urlBase64ToUint8Array(
         process.env.NEXT_PUBLIC_VAPID_PUBLIC_KEY!
       ),
@@ -102,7 +108,8 @@ function InstallPrompt() {
 
   useEffect(() => {
     setIsIOS(
-      /iPad|iPhone|iPod/.test(navigator.userAgent) && !(window as any).MSStream
+      /iPad|iPhone|iPod/.test(navigator.userAgent) &&
+        !(window as WindowWithMSStream).MSStream
     );
 
     setIsStandalone(window.matchMedia("(display-mode: standalone)").matches);
@@ -123,7 +130,7 @@ function InstallPrompt() {
             {" "}
             ⎋{" "}
           </span>
-          and then "Add to Home Screen"
+          and then &quot;Add to Home Screen&quot;
           <span role="img" aria-label="plus icon">
             {" "}
             ➕{" "}

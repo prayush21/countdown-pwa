@@ -3,9 +3,7 @@
 import React from "react";
 import { useTimer } from "react-timer-hook";
 
-type Props = {};
-
-function Countdown({}: Props) {
+function Countdown() {
   const exp = new Date("01-01-2025");
 
   const { seconds, minutes, hours, days } = useTimer({ expiryTimestamp: exp });

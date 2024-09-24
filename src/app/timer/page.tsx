@@ -1,9 +1,7 @@
 import Timer from "@/components/Timer";
 import React from "react";
 
-type Props = {};
-
-function Page({}: Props) {
+function Page() {
   return (
     <>
       <Timer />
