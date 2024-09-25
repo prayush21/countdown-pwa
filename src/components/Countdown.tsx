@@ -5,7 +5,6 @@ import { useTimer } from "react-timer-hook";
 
 function Countdown() {
   const exp = new Date("01-01-2025");
-  let st = exp.toDateString();
 
   const { seconds, minutes, hours, days } = useTimer({ expiryTimestamp: exp });
   // console.log("sec, min, expTm", seconds, minutes, exp.toDateString());

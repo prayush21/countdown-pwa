@@ -1,6 +1,5 @@
 "use client";
 
-import Countdown from "@/components/Countdown";
 import dynamic from "next/dynamic";
 import React from "react";
 
