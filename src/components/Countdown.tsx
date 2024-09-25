@@ -5,11 +5,17 @@ import { useTimer } from "react-timer-hook";
 
 function Countdown() {
   const exp = new Date("01-01-2025");
+  let st = exp.toDateString();
 
   const { seconds, minutes, hours, days } = useTimer({ expiryTimestamp: exp });
+  // console.log("sec, min, expTm", seconds, minutes, exp.toDateString());
+
   return (
     <div className="flex flex-col items-center justify-center h-full p-10 text-white">
       <div className="text-4xl font-bold tracking-wider mb-4">Countdown</div>
+      <div className="text-4xl font-bold tracking-wider mb-4">
+        {exp.toDateString()}
+      </div>
       <div className="flex space-x-4 text-2xl font-semibold">
         <div className="flex flex-col items-center">
           <span className="text-5xl">{days}</span>
